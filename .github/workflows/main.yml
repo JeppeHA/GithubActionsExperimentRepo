@@ -1,8 +1,7 @@
 name: WeatherWorkflow
-
 on:
   schedule:
-    - cron: 15 * * * *
+    - cron: "15 * * * *"
 
 jobs:
   run-script:
@@ -10,7 +9,7 @@ jobs:
 
     steps:
       - name: Check out repository
-      - uses: actions/checkout@v4
+        uses: actions/checkout@v4
 
       - name: Set up Python
         uses: actions/setup-python@v5
@@ -23,5 +22,4 @@ jobs:
           pip install requests python-dotenv
 
       - name: Run Python script
-        run: |
-          python main.py
+        run: python main.py
