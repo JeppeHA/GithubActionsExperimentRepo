@@ -1,6 +1,7 @@
 ﻿import requests
 from dotenv import find_dotenv, load_dotenv
 import os
+import smtplib
 
 def get_posts():
     env_path = find_dotenv()
@@ -33,6 +34,8 @@ def main():
     print(round(posts["main"]["temp"] - 273))
     print("Wind speed:")
     print(posts["wind"]["speed"])
+
+
 
 
 
