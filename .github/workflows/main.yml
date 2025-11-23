@@ -1,7 +1,6 @@
 name: WeatherWorkflow
 on:
   schedule:
-    # Runs at every 5-minute interval
     - cron: '0 7 * * 1-5'
 
 jobs:
@@ -17,7 +16,7 @@ jobs:
     - name: Set up Python
       uses: actions/setup-python@v2
       with:
-        python-version: '3.10'  # You can specify the exact version if needed
+        python-version: '3.10'  
 
     # Step 3: Install dependencies
     - name: Install dependencies
