@@ -26,18 +26,22 @@ def get_posts():
 
 
 def main():
+    send_email()
+
+
+def send_email():
     posts = get_posts()
-    print(posts)
-    print("Weather:")
-    print(posts["weather"][0]["main"])
-    print("Temperature:")
-    print(round(posts["main"]["temp"] - 273))
-    print("Wind speed:")
-    print(posts["wind"]["speed"])
+    email = "jeppe.holmandersen@gmail.com"
+    subject = "Weather forecast"
+    message = f"The weather is {posts['weather'][0]['main']} and {round(posts['main']['temp'] - 273)} degrees Celsius"
+    text = f"Subject: {subject}\n\n{message}"
 
-
-
-
+    server = smtplib.SMTP("smtp.gmail.com", 587)
+    server.starttls()
+    server.login(email, os.getenv("APP_PASSWORD"))
+    server.sendmail(email, email, text)
+    server.quit()
+    print("Email sent!")
 
 
 if __name__ == "__main__":
